@@ -1,13 +1,13 @@
 var sketchProc = function(processingInstance) {
-     
+
 with (processingInstance) {
-        
-size(400, 400); 
-        
+
+size(400, 400);
+
 frameRate(30);
-        
-        
-// WRITE YOUR PROGRAM CODE HERE  
+
+
+// WRITE YOUR PROGRAM CODE HERE
 strokeWeight(3);
 var posX;
 var posY;
@@ -51,7 +51,7 @@ var parser = function(command) {
         if (Split[0].charAt(Split[0].length - 1) === ")") {
             // identified as a function
         } else if (Split[0] === "if") {
-        // identified as an if statement
+        // identified as an if statement.
         return "if";
         } else if (Split[0] === "plane") {
             // identified as a plane
@@ -70,16 +70,16 @@ var parser = function(command) {
             // identified as a variable
             return 'variable ' + Split[0] + ' ' + Split[2];
         }
-        
+
       } else if (charListAlphaHigher.indexOf(comm.charAt(0)) !== -1) {
           // identified as a point
           var splitS = comm.split('(').join(',').split(')');
           var splitT = splitS[0].split(',');
           return 'point ' + splitT[0] + ' ' + splitT[1] + ' ' + splitT[2];
-          
+
           // var param = splitS[1].split(',');
           // return 'point ' + splitS[0] + ' ' + param[0] + ' ' + param[1];
-          
+
       } else {
           // unidentified command
           return "null";
@@ -90,7 +90,7 @@ var parser = function(command) {
     /*
     for(var i = 0; i < line.length; i++) {
         if (charListAlphabet.indexOf(i) !==  -1) {
-            
+
         }
     }
     */
@@ -128,7 +128,7 @@ var calc = function(code) {
     }
 
     for (var i = 0; i+2 < split.length; i++) {
-        
+
         if (charListCalcId.indexOf(split[i + 1].charAt(0)) != -1) {
 
             if (charListNumerals.indexOf(split[i+2].charAt(0)) != -1) {
@@ -140,7 +140,7 @@ var calc = function(code) {
                 console.log(num1);
             }
 
-            
+
             var val;
             if (split[i + 1] === '+') {
                 val = num1 + num2;
@@ -160,7 +160,7 @@ var calc = function(code) {
     return num1;
 };
 
-var add = function(code) { 
+var add = function(code) {
   var raw = parser(code);
   var rawList = raw.split(' ');
   var tempLength = RawScript.length;
@@ -190,8 +190,8 @@ var add = function(code) {
   } else {
       RawScript[RawScript.length] = raw;
   }
-  
-  
+
+
 };
 var del = function(ref) {
     var res = find(ref);
@@ -251,9 +251,9 @@ var draw = function() {
              var p2y = RawScript[p2].split(' ')[3];
              line(p1x,p1y,p2x,p2y);
          }
-         
-         
-         
+
+
+
      }
 };
 
@@ -262,17 +262,20 @@ add('A(0,0)');
 add('B(300,100)');
 add('C(0,100)');
 add('triangle ABC');
+add('D(300,300)');
+add('triangle ABD');
+
 add('x = 10');
 console.log(RawScript);
-console.log(find("variable x"))
+console.log(find("variable x"));
 console.log(calc('x * 10 + 20'));
 
 //YOUR JS PROGRAM CODE ENDS HERE.
-}};  
+}};
 // Get the canvas that Processing-js will use
-    
-var canvas = document.getElementById("mycanvas"); 
-  
+
+var canvas = document.getElementById("mycanvas");
+
   // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
-    
-var processingInstance = new Processing(canvas, sketchProc); 
+
+var processingInstance = new Processing(canvas, sketchProc);
