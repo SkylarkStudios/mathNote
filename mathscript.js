@@ -258,16 +258,33 @@ var draw = function() {
      }
 };
 var updateView = function() { 
-	var editBox = document.getElementById("editBox").textContent;
-		MathScript = editBox.split('.');
+// https://stackoverflow.com/questions/40417527/how-do-i-preserve-line-breaks-when-getting-text-from-a-textarea
+	var editBox = document.getElementById("editBox").innerHTML;
+	console.log(editBox);
+		MathScript = editBox.split('<br>','<div>','</div>');
 		RawScript = [];
 		for (var i = 0; i < MathScript.length; i++) {
 			add(MathScript[i]);
 		}
+		console.log(MathScript);
 };
 var onRun = function() {
 	updateView();
 }
+
+var convertElementToText = function(element) {
+	  switch(element.tagName) {
+		  case "BR": 
+			  return "\n";
+		  case "P": // fall through to DIV
+		  case "DIV": 
+			  return (element.previousSibling ? "\n" : "") 
+				  + [].map.call(element.childNodes, convertElement).join("");
+		  default: 
+			  return element.textContent;
+	  }
+  };
+	
 runButton.addEventListener("click",onRun);
 
 /*
