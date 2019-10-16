@@ -14,6 +14,7 @@ var posY;
 var Ssize = 400;
 var MathScript = [];
 var RawScript = [];
+var runButton = document.getElementById("runButton");
 var charListAlphaLower = [
     "a","b","c","d","e","f","g",
     "h","i","j","k","l","m","n",
@@ -256,8 +257,20 @@ var draw = function() {
 
      }
 };
+var updateView = function() { 
+	var editBox = document.getElementById("editBox").textContent;
+		MathScript = editBox.split('.');
+		RawScript = [];
+		for (var i = 0; i < MathScript.length; i++) {
+			add(MathScript[i]);
+		}
+};
+var onRun = function() {
+	updateView();
+}
+runButton.addEventListener("click",onRun);
 
-
+/*
 add('A(0,0)');
 add('B(300,100)');
 add('C(0,100)');
@@ -269,6 +282,7 @@ add('x = 10');
 console.log(RawScript);
 console.log(find("variable x"));
 console.log(calc('x * 10 + 20'));
+*/
 
 //YOUR JS PROGRAM CODE ENDS HERE.
 }};

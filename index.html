@@ -4,11 +4,28 @@
     
 <title>Skylark MathScript</title> 
 
+<meta charset="utf-8">
 </head>
+<style>
+#editBox {
+	font-family:"Lucida Console", Monaco, monospace;
+	border-width:medium;
+	border-color:black;
+	border: 10px;
+}
+</style>
 <body>
 <p align="center"> 
-     
-<canvas id="mycanvas"></canvas> 
+<h1> MathScript by Skyrift</h1>
+<button>Save</button>
+<button>Load</button>
+<button id="runButton">Run</button>
+<table>
+<td>
+<div id="editBox" contenteditable="true"></div></td><td>
+<div><canvas id="mycanvas"></canvas></div>
+</td>
+</table>
     
 </p>
  </body>
