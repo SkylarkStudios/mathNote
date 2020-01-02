@@ -259,7 +259,7 @@ var draw = function() {
 };
 var updateView = function() { 
 // https://stackoverflow.com/questions/40417527/how-do-i-preserve-line-breaks-when-getting-text-from-a-textarea
-	var editBox = document.getElementById("editBox").textContent;
+	var editBox = document.getElementById("editBox").value;
 	console.log(editBox);
 		MathScript = editBox.split(/*'<br>','<div>','</div>'*/'\n');
 		RawScript = [];
